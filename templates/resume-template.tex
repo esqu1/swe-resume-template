@@ -1,0 +1,144 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[10pt,letterpaper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+%\usepackage{mathpazo}
+\usepackage{multicol}
+\usepackage{fontspec}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\newcommand{\lmr}{\fontfamily{lmr}\selectfont}
+\DeclareTextFontCommand{\textlm}{\lmr}
+\setlist{nosep}
+\renewcommand{\sfdefault}{\rmdefault}
+% moderncv themes
+\moderncvstyle{classic}                             % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                               % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+%\setsansfont[BoldFont={Frutiger Bold}, ItalicFont={Frutiger LT Std}]{Frutiger}
+\setsansfont[BoldFont={MetaBold}, ItalicFont={Meta-Italic}]{Meta}
+% character encoding
+\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.91]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{$info.firstname$}{$info.lastname$}
+\title{Software Engineer}                               % optional, remove / comment the line if not wanted
+%\address{}{}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+%\phone[mobile]{+1~(234)~567~8900}                   % optional, remove / comment the line if not wanted
+%\phone[fixed]{+1~(234)~567~8900}                    % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+\email{$info.email$}                               % optional, remove / comment the line if not wanted
+\homepage{$info.homepage$}                         % optional, remove / comment the line if not wanted
+%\extrainfo{http://otherwebsite.com}                 % optional, remove / comment the line if not wanted
+%\photo[64pt][0.4pt]{pic}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+
+\definecolor{lightgray}{RGB}{222,222,222}
+\renewcommand{\labelitemi}{$$\circ$$}
+\renewcommand{\labelitemii}{-}
+
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+\begin{minipage}[t]{0.3\textwidth}
+
+	%\vspace{-18.1cm}
+	\section{Education \hrule width 4.7cm }
+    \textbf{$education.school$}\\
+    {\footnotesize{
+        \textit{$education.graddate$} \\
+        $for(education.degrees)$\textbf{$education.degrees.title$} $education.degrees.major$$sep$\newline
+        $endfor$\\
+        \underline{Relevant Coursework}: \\
+        $for(education.coursework)$$education.coursework$$sep$ \newline
+        $endfor$\\
+        $for(education.others)$\underline{$education.others.title$}: $education.others.text$$sep$\newline        $endfor$\\
+    }}
+
+	\vspace{0.2cm}
+	\section{Skills \hrule width 4.7cm}
+	\vspace{-0.25cm}
+	{\footnotesize
+		\vspace{0.31cm}
+		\textbf{Programming Languages} \\
+        $for(skills.programming)$$skills.programming$$sep$, $endfor$\\
+        \textbf{Frameworks} \\
+        $for(skills.frameworks)$$skills.frameworks$$sep$, $endfor$\\
+		\textbf{Interests}\\
+        $for(skills.interests)$$skills.interests$$sep$, $endfor$\\
+	}
+
+	\vspace{0.2cm}
+	\section{Awards/Achievements \hrule width 4.7cm}
+	 {\footnotesize
+      $for(awards)$\textbf{$awards.title$} \\
+      $awards.subtitle$\\$sep$
+      $endfor$
+	 }
+
+	\vspace{0.2cm}
+	\section{Other Experience \hrule width 4.7cm}
+	 {\footnotesize
+      $for(other)$\textbf{$other.title$} \\
+      $other.subtitle$\\$sep$
+      $endfor$
+	 }
+\end{minipage}
+% \textcolor{lightgray}{\vrule}
+\begin{minipage}[t]{0.6\linewidth}
+	%\vspace{-1.3cm}
+	\section{Professional Experience \hrule width 13.5cm}
+    ${for(professional)}\cventry{}{\hspace{-2.74cm} $professional.company$}{$professional.position$}{$professional.location$}{}{
+        \begin{itemize}[leftmargin=-2.3cm]
+            \item[] \hspace{-0.41cm} \textit{$professional.duration$}
+            ${for(professional.notes)}\item $professional.notes$$sep$
+            ${endfor}
+        \end{itemize}
+    }
+    ${endfor}
+
+	\vspace{0.2cm}
+	\section{Projects \& Research Experience \hrule width 13.5cm}
+	
+    ${for(projects)}\cventry{}{\hspace{-2.74cm} $projects.name$$if(projects.link)$\textnormal{ | \link[$projects.link$]{$projects.link$}}$endif$}{}{}{}{
+        \begin{itemize}[leftmargin=-2.3cm]
+            \item[] \hspace{-0.41cm} \textit{$projects.duration$}
+            ${for(projects.notes)}\item $projects.notes$$sep$
+            ${endfor}
+        \end{itemize}
+    }
+${endfor}
+	
+\end{minipage}
+
+%\clearpage\end{CJK*}                              % if you are typesetting your resume in Chinese using CJK; the \clearpage is required for fancyhdr to work correctly with CJK, though it kills the page numbering by making \lastpage undefined
+\end{document}
+
+
+%% end of file `template.tex'.
